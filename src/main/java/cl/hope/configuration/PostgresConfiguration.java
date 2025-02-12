@@ -1,4 +1,4 @@
-/*package cl.hope.configuration;
+package cl.hope.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.JdbcConnectionDetails;
@@ -35,8 +35,6 @@ public class PostgresConfiguration {
             public String getJdbcUrl() {
                 return url;
             }
-
         };
     }
-
-}*/
+}

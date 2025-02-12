@@ -1,10 +1,9 @@
 package cl.hope.controllers;
 
-import cl.hope.entities.HopeRequest;
-import cl.hope.entities.HopeResponse;
+import cl.hope.controllers.entities.HopeRequest;
+import cl.hope.controllers.entities.HopeResponse;
 import cl.hope.mappers.HopeMapper;
 import cl.hope.services.HopeService;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +17,7 @@ import java.util.List;
 public class HopeController {
 
     private final HopeService hopeService;
-    private final HopeMapper hopeMapper = HopeMapper.INSTANCE;
+    private static final HopeMapper hopeMapper = HopeMapper.INSTANCE;
 
     @PostMapping("/inserthope")
     public ResponseEntity<String> insertHope(@Valid @RequestBody HopeRequest hopeRequest) {

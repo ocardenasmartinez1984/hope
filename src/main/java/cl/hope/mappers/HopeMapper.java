@@ -1,9 +1,9 @@
 package cl.hope.mappers;
 
+import cl.hope.controllers.entities.HopeRequest;
+import cl.hope.controllers.entities.HopeResponse;
 import cl.hope.services.entities.Hope;
 import cl.hope.repositories.entities.HopeEntity;
-import cl.hope.entities.HopeRequest;
-import cl.hope.entities.HopeResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
