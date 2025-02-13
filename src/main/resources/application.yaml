@@ -10,7 +10,3 @@ spring:
   h2:
     console:
       enabled: true
-#database:
-#  user: postgres
-#  password: admin
-#  url: jdbc:postgresql://localhost:5432/postgres
