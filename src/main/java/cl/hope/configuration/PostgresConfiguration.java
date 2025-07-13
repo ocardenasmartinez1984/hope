@@ -16,7 +16,7 @@ public class PostgresConfiguration {
 
     @Value("${database.url}")
     private String url;
-
+z
     @Bean
     public JdbcConnectionDetails postgresJdbcConnectionDB() {
         return new JdbcConnectionDetails() {
