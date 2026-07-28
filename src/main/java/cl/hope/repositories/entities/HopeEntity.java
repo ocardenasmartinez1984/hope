@@ -3,7 +3,7 @@ package cl.hope.repositories.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "hope")
@@ -20,7 +20,6 @@ public class HopeEntity {
     @Column(nullable = false)
     private String lastName;
 
-    @Temporal(TemporalType.DATE)
-    private Date birthDate;
+    private LocalDate birthDate;
 
 }

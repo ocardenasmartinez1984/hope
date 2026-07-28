@@ -2,7 +2,7 @@ package cl.hope.services.entities;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class Hope {
@@ -11,6 +11,6 @@ public class Hope {
 
     private String lastName;
 
-    private Date birthDate;
+    private LocalDate birthDate;
 
 }

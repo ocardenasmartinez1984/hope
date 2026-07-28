@@ -1,10 +1,9 @@
-package cl.hope.entities;
+package cl.hope.controllers.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class HopeResponse {
@@ -13,6 +12,7 @@ public class HopeResponse {
 
     private String lastName;
 
-    private Date birthDate;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate birthDate;
 
 }

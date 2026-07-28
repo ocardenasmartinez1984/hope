@@ -62,6 +62,8 @@
 #
 ##############################################################################
 
+JAVA_HOME="C:/Users/ocard/javas/jdk-17.0.19+10"
+
 # Attempt to set APP_HOME
 
 # Resolve links: $0 may be a link

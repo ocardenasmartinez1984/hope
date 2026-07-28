@@ -1,8 +1,9 @@
 package cl.hope.services;
 
-import cl.hope.services.entities.Hope;
+import cl.hope.exceptions.HopeNotFoundException;
 import cl.hope.mappers.HopeMapper;
 import cl.hope.repositories.HopeRepository;
+import cl.hope.services.entities.Hope;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +14,17 @@ import java.util.List;
 public class HopeService {
 
     private final HopeRepository hopeRepository;
-    private final HopeMapper hopeMapper = HopeMapper.INSTANCE;
+    private final HopeMapper hopeMapper;
 
-    public void insertHope(Hope hope) {
-        hopeRepository.save(hopeMapper.hopeToHopeEntity(hope));
+    public Hope insertHope(Hope hope) {
+        var entity = hopeRepository.save(hopeMapper.hopeToHopeEntity(hope));
+        return hopeMapper.hopeEntityToHope(entity);
     }
 
     public Hope getHope(Long id) {
-        return hopeMapper.hopeEntityTityToHope(hopeRepository.findById(id).orElseThrow());
+        var entity = hopeRepository.findById(id)
+                .orElseThrow(() -> new HopeNotFoundException("Hope not found with id: " + id));
+        return hopeMapper.hopeEntityToHope(entity);
     }
 
     public List<Hope> getHopes() {
