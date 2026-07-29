@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.2'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'jacoco'
 }
 
 group = 'cl.hope'
@@ -38,6 +39,45 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
+jacoco {
+	toolVersion = "0.8.11"
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+	reports {
+		xml.required = true
+		html.required = true
+	}
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			element = 'CLASS'
+			limit {
+				minimum = 1.00
+			}
+			excludes = [
+				'cl.hope.HopeApplication',
+				'cl.hope.controllers.dtos.*',
+				'cl.hope.services.entities.*',
+				'cl.hope.repositories.entities.*',
+				'cl.hope.exceptions.ErrorResponse',
+				'cl.hope.exceptions.ErrorResponse.ErrorResponseBuilder',
+				'cl.hope.exceptions.ErrorResponse.FieldError',
+				'cl.hope.exceptions.ErrorResponse.FieldError.FieldErrorBuilder',
+				'cl.hope.mappers.HopeMapperImpl'
+			]
+		}
+	}
+}
+
+tasks.named('check') {
+	dependsOn jacocoTestCoverageVerification
 }
